@@ -39,9 +39,9 @@ void loop() {
 
 
     
-  //1
+  //Starts at position 0
 
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (a1 == 0) ) // If the sensor gets a signal, and the not is not playing: 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (a1 == 0) ) // If the sensor gets a signal, and the note is not playing: 
   {
         
     playNote(1, n1, 100);    // Play note 1
@@ -59,10 +59,11 @@ void loop() {
   
   forw();
   delay(d);
-  //2
+  
+ //Moved to 1
 
 
-  if (( (analogRead(A0)+analogRead(A1)) > sens ) && (b1 == 0) ) // If the sensor gets a signal, and the not is not playing: 
+  if (( (analogRead(A0)+analogRead(A1)) > sens ) && (b1 == 0) ) // If the sensor gets a signal, and the note is not playing: 
 
   {
          
@@ -80,9 +81,11 @@ void loop() {
   }
   forw();
   delay(d);
-  //3
+ 
+  //Moved to 2
 
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (c1 == 0) ) // If the sensor gets a signal, and the not is not playing: 
+ 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (c1 == 0) ) // If the sensor gets a signal, and the note is not playing: 
 
   {
    
@@ -101,10 +104,10 @@ void loop() {
   forw();
   delay(d);
   
-  //4
+  //Moved to 3
 
   
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (d1 == 0) ) // If the sensor gets a signal, and the not is not playing: 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (d1 == 0) ) // If the sensor gets a signal, and the note is not playing: 
 
   {
     
@@ -122,9 +125,11 @@ void loop() {
   }
   forw();
   delay(1.5*d);           //increased the delay for the last beam
-  //5
+  
+  //Moved to 4
 
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (e1 == 0) ) // If the sensor gets a signal, and the not is not playing: 
+ 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (e1 == 0) ) // If the sensor gets a signal, and the note is not playing: 
 
   {
     
@@ -145,9 +150,10 @@ void loop() {
   back();
   delay(d);
   
-  //4
+  //Moved back to 3
  
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (d1 == 0) )  // If the sensor gets a signal, and the not is not playing: 
+ 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (d1 == 0) )  // If the sensor gets a signal, and the note is not playing: 
 
   {
     
@@ -163,11 +169,13 @@ void loop() {
     playNote(1, n4, 0);     
     d1 = 0;                         
   }
-back();
-delay(d);
-  //3
+  back();
+  delay(d);
+  
+  //moved back to 2
  
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (c1 == 0) )  // If the sensor gets a signal, and the not is not playing: 
+ 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (c1 == 0) )  // If the sensor gets a signal, and the note is not playing: 
 
   {
     
@@ -183,12 +191,13 @@ delay(d);
     playNote(1, n3, 0);     // Stop playing note 3.
     c1 = 0;                         // Change the status variable to zero.
   }
-back();
-delay(d);
+  back();
+  delay(d);
 
-  //2
+  //Moved back to 1
  
-  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (b1 == 0) )  // If the sensor gets a signal, and the not is not playing: 
+ 
+  if ( ((analogRead(A0)+analogRead(A1)) > sens ) && (b1 == 0) )  // If the sensor gets a signal, and the note is not playing: 
 
   {
     
@@ -204,9 +213,14 @@ delay(d);
     playNote(1, n2, 0);     // Stop playing note 2.
     b1 = 0;                         // Change the status variable to zero.
   }
- back;
- delay(1.5*d); 
+  back;
+  delay(1.5*d); 
+ //0     
+ //At this point the laser has returned to position 0 hence the cycle will continue
+
 }
+
+
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 void forw()    // Function to rotate the motor by a steps in a direction.
